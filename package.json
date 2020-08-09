@@ -1,7 +1,7 @@
 {
   "name": "generate-chrome-extension",
   "shortName": "react-chrome",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Boilerplate for Custom Chrome Extensions",
   "main": "./lib/main.js",
   "bin": {
@@ -22,7 +22,15 @@
     "url": "https://github.com/JithinAntony4/generate-chrome-extension.git",
     "template_url": "https://github.com/JithinAntony4/react-chrome-extension.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react-chrome",
+    "react",
+    "chrome",
+    "cli",
+    "extension",
+    "google",
+    "manifest"
+  ],
   "author": "Jithin Antony",
   "license": "MIT",
   "bugs": {
