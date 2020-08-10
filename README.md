@@ -4,7 +4,7 @@ Boilerplate for Custom Chrome Extensions
 [![npm-release](https://img.shields.io/npm/v/generate-chrome-extension.svg?label=npm)](https://www.npmjs.com/package/generate-chrome-extension)
 [![generate-chrome-extension](https://github.com/JithinAntony4/generate-chrome-extension/workflows/generate-chrome-extension/badge.svg?branch=master)](https://github.com/generate-chrome-extension)
 [![license](https://img.shields.io/npm/l/generate-chrome-extension)](https://github.com/JithinAntony4/generate-chrome-extension/blob/master/LICENSE)
-
+![npm](https://img.shields.io/npm/dw/generate-chrome-extension)
 Easily create Google Chrome Extensions using the `latest` version of React.
 
 The following scenarios/options are supported:
