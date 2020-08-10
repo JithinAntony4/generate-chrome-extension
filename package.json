@@ -1,7 +1,7 @@
 {
   "name": "generate-chrome-extension",
   "shortName": "react-chrome",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Boilerplate for Custom Chrome Extensions",
   "main": "./lib/main.js",
   "bin": {
@@ -15,7 +15,7 @@
     "build:production": "npm run clean && npm run build",
     "start": "npm run build -- --watch",
     "clean": "rimraf lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
