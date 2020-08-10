@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 10
       - name: install
-        run: npm ci --ignore-scripts
+        run: npm install --ignore-scripts
       - name: build
         run: npm run build:production
       - name: unit test
