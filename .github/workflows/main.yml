@@ -23,13 +23,13 @@ jobs:
         run: npm run test
       - name: prepare artifact
         if: startsWith(github.ref, 'refs/tags/v')
-        run: rsync -av --progress . dist --exclude node_modules --exclude dist --exclude .github --exclude .git --exclude src
+        run: rsync -av --progress . lib --exclude node_modules --exclude lib --exclude .github --exclude .git --exclude src
       - name: upload artifact
         if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v2
         with:
-          name: dist
-          path: dist
+          name: lib
+          path: lib
   npm:
     needs: build
     runs-on: ubuntu-latest
@@ -43,11 +43,11 @@ jobs:
       - name: download artifact
         uses: actions/download-artifact@v2
         with:
-          name: dist
-          path: dist
+          name: lib
+          path: lib
       - name: npm publish
         run: |
-          cd dist
+          cd lib
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
