@@ -46,7 +46,11 @@ The project is automatically being watched, any changes to the files will recomp
 
 ## Build/package for production
 
-- Under developing
+- update version number inside `./dist/chrome/manifest.json`
+- run `npm run pack`
+- upload `extension-build.zip` to the chrome webstore.
+
+This will run a production build and will automatically zip it as an extension package in the root folder named: `extension-build.zip`
 
 ## React folder
 
