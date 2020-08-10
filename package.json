@@ -1,7 +1,7 @@
 {
   "name": "generate-chrome-extension",
   "shortName": "react-chrome",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Boilerplate for Custom Chrome Extensions",
   "main": "./lib/main.js",
   "bin": {
