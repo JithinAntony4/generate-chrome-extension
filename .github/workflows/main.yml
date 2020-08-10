@@ -1,4 +1,4 @@
-name: '@larscom/ng-chrome-extension'
+name: 'generate-chrome-extension'
 on:
   push:
     branches:
