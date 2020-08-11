@@ -19,10 +19,10 @@ export class CLI {
         const { projectName } = await askProjectName('projectName');
         await this.project.validateName(projectName);
 
-        const { features } = await askFeatures('features');
-        this.project.validateFeatures(features);
+        // const { features } = await askFeatures('features');
+        // this.project.validateFeatures(features);
 
-        await this.project.create(projectName, features);
+        await this.project.create(projectName, []);
         await this.project.install(projectName);
 
         this.log.showHelp(projectName);
