@@ -59,7 +59,7 @@ export class ProjectService {
             await git.clone(repository.template_url, cloneDir);
             await this.cleanDir(cloneDir, featuresToRemove);
 
-            this.spinner.stop(`done! created new angular chrome extension in: ${cloneDir}`);
+            this.spinner.stop(`done! created new react chrome extension in: ${cloneDir}`);
         } catch (e) {
             this.spinner.stop();
             this.log.error(e);
