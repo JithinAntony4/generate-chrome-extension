@@ -57,7 +57,7 @@ This will run a production build and will automatically zip it as an extension p
 This folder contains the react single app source code.
 inside it can build page for popup, options, tabs.
 
-see: `./react/src/`
+see: `./src/`
 
 ## Chrome folder
 
