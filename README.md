@@ -32,11 +32,11 @@ react-chrome
 ## How to use/develop
 
 - change directory to your newly created project
-- run react app on the browser(popup.html) `npm run start:react`
-- run production build `npm run build:production`
-- run extension build `npm run build:extension`
+- run react app (extensions files) on the browser `npm run start`
+- build unpacked extension `npm run build`
+- production build (this zip file can upload to Google WebStore) `npm run pack`
 - goto: `chrome://extensions` in the browser and enable `'developer mode'`
-- press `Load unpacked` and target the folder `dist/chrome`
+- press `Load unpacked` and target the folder `build/`
 
 The project is automatically being watched, any changes to the files will recompile the project.
 
@@ -46,7 +46,7 @@ The project is automatically being watched, any changes to the files will recomp
 
 ## Build/package for production
 
-- update version number inside `./dist/chrome/manifest.json`
+- update version number inside `./src/manifest.json`
 - run `npm run pack`
 - upload `extension-build.zip` to the chrome webstore.
 
@@ -55,10 +55,10 @@ This will run a production build and will automatically zip it as an extension p
 ## React folder
 
 This folder contains the react single app source code.
-Only one feature (popup) lives inside it other features (options,tab) will come soon.
+inside it can build page for popup, options, tabs.
 
-see: `./react/src/App.js`
+see: `./react/src/`
 
 ## Chrome folder
 
-This folder contains the content page/background page scripts.
+This `./build` folder contains the content page,background page, popup page scripts.
