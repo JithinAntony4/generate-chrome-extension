@@ -1,5 +1,5 @@
 export enum Feature {
-    POPUP = 'popup',
-    OPTIONS = 'options',
-    TAB = 'tab'
+    POPUP = 'Popup',
+    OPTIONS = 'Options',
+    TAB = 'Newtab'
 }

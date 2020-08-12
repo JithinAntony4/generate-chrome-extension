@@ -58,7 +58,8 @@ export class ProjectService {
 
             await git.clone(repository.template_url, cloneDir);
             await this.cleanDir(cloneDir, featuresToRemove);
-
+            await this.writeWebpackConfig(cloneDir, chosenFeatures);
+            await this.writeManifestJson(cloneDir, projectName, chosenFeatures);
             this.spinner.stop(`done! created new react chrome extension in: ${cloneDir}`);
         } catch (e) {
             this.spinner.stop();
@@ -110,11 +111,50 @@ export class ProjectService {
     private async cleanDir(
         cloneDir: string,
         featuresToRemove: Feature[]
-    ): Promise<[Promise<void>[], Promise<void>[]]> {
+    ): Promise<[Promise<void>[], Promise<void>[], Promise<void>[]]> {
         return Promise.all([
             deleteDirs.map(dir => fs.remove(`${cloneDir}/${dir}`)),
-            deleteFiles.map(file => fs.unlink(`${cloneDir}/${file}`))
+            deleteFiles.map(file => fs.unlink(`${cloneDir}/${file}`)),
+            featuresToRemove.map(feature => fs.remove(`${cloneDir}/src/pages/${feature}`))
         ]);
+    }
+
+    private async writeManifestJson(cloneDir: string, projectName: string, chosenFeatures: Feature[]): Promise<void> {
+        const manifestJson = `${cloneDir}/src/manifest.json`;
+        const currentManifestJson = require(manifestJson);
+
+        const manifest = {
+            name: projectName,
+            short_name: projectName,
+            description: `Generated with ${this.pkg.name}`,
+            browser_action: chosenFeatures.includes(Feature.POPUP) ? currentManifestJson.browser_action : undefined,
+            options_page: chosenFeatures.includes(Feature.OPTIONS) ? currentManifestJson.options_page : undefined,
+            chrome_url_overrides: chosenFeatures.includes(Feature.TAB) ? currentManifestJson.chrome_url_overrides : undefined
+        };
+
+        return fs.writeJson(manifestJson, {...currentManifestJson, ...manifest}, jsonFormat);
+    }
+
+    private async writeWebpackConfig(cloneDir: string, chosenFeatures: Feature[]): Promise<void> {
+        const webpackConfig = `${cloneDir}/webpack.config.js`;
+        fs.readFile(webpackConfig, (function (err, data) {
+            let webpackContents = data.toString("utf8");
+            if (!chosenFeatures.includes(Feature.TAB)) {
+                webpackContents = webpackContents.replace(`newtab: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.jsx'),`, '')
+                webpackContents = webpackContents.replace("new HtmlWebpackPlugin({template: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.html'), filename: 'newtab.html', chunks: ['newtab'],}),", '')
+            }
+            if (!chosenFeatures.includes(Feature.OPTIONS)) {
+                webpackContents = webpackContents.replace(`options: path.join(__dirname, 'src', 'pages', 'Options', 'index.jsx'),`, '')
+                webpackContents = webpackContents.replace("new HtmlWebpackPlugin({template: path.join(__dirname, 'src', 'pages', 'Options', 'index.html'), filename: 'options.html', chunks: ['options'],}),", '')
+
+            }
+            if (!chosenFeatures.includes(Feature.POPUP)) {
+                webpackContents = webpackContents.replace(`popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.jsx'),`, '')
+                webpackContents = webpackContents.replace("new HtmlWebpackPlugin({template: path.join(__dirname, 'src', 'pages', 'Popup', 'index.html'), filename: 'popup.html', chunks: ['popup'],}),", '')
+            }
+            return fs.writeFile(webpackConfig, webpackContents);
+        }))
+
     }
 
     private existsAsync(projectName: string): Promise<boolean> {
