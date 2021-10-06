@@ -64,4 +64,4 @@ see: `./src/`
 This `./build` folder contains the content page,background page, popup page scripts.
 
 ## License
-This project is licensed under the MIT license, Copyright (c) 2021 Jithin Antony. For more information see LICENSE.md.
+This project is licensed under the MIT license, Copyright (c) 2021 Jithin Antony. For more information see LICENSE.md. 
