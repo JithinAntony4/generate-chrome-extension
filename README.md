@@ -1,5 +1,5 @@
 # generate-chrome-extension
-Boilerplate for Custom Chrome Extensions
+Boilerplate for Custom Chrome Extensions 
 
 [![npm-release](https://img.shields.io/npm/v/generate-chrome-extension.svg?label=npm)](https://www.npmjs.com/package/generate-chrome-extension)
 [![generate-chrome-extension](https://github.com/JithinAntony4/generate-chrome-extension/workflows/generate-chrome-extension/badge.svg?branch=master)](https://github.com/generate-chrome-extension)
